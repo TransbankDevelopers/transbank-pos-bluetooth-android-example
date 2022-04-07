@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.POSBluetooth">
         <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/SplashTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

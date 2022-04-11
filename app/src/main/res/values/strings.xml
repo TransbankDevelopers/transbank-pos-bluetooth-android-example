@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">POS Bluetooth</string>
+    <string name="no_paired_device">No existen POS enlazados</string>
+    <string name="connected">Conectado</string>
+    <string name="disconnected">Desconectado</string>
+    <string name="connecting">Conectando</string>
+    <string name="invalid_amount">Monto inválido</string>
+    <string name="btn_connect">Conectar</string>
+    <string name="btn_disconnect">Desconectar</string>
+    <string name="btn_poll">Poll</string>
+    <string name="btn_load_keys">Carga de llaves</string>
+    <string name="btn_sale">Venta</string>
+    <string name="btn_multicode_sale">Venta multicódigo</string>
+    <string name="btn_last_sale">Última venta</string>
+    <string name="btn_multicode_last_sale">Última venta multicódigo</string>
+    <string name="btn_refund">Anular venta</string>
+    <string name="btn_totals">Total de ventas</string>
+    <string name="btn_details">Detalle de ventas</string>
+    <string name="btn_multicode_details">Detalle de ventas multicódigo</string>
+    <string name="btn_close">Cierre de ventas</string>
+    <string name="txt_state">Estado POS:</string>
+    <string name="txt_hint_devices">Dispositivos</string>
+    <string name="txt_hint_sale">Monto</string>
+    <string name="txt_hint_commerce_code">Código de comercio</string>
+    <string name="txt_hint_operation_id">Nº Operación</string>
+    <string name="sw_get_voucher">Obtener voucher</string>
+    <string-array name="commerce_codes">
+        <item>597029414301</item>
+        <item>597029414302</item>
+        <item>597029414303</item>
+        <item>597029414304</item>
+        <item>597029414305</item>
+        <item>597029414306</item>
+        <item>597029414307</item>
+        <item>597029414308</item>
+    </string-array>
 </resources>

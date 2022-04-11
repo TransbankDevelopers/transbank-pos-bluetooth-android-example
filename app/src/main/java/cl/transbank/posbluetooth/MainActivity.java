@@ -182,7 +182,7 @@ public class MainActivity extends CommonActivity {
         byte lrc = LRC(hexCommand);
         String fullCommand = hexCommand + String.format("%02X",lrc);
         Log.i(TAG, posLib.convertHexToString(fullCommand));
-        posLib.startTransaction("fullCommand");
+        posLib.startTransaction(fullCommand);
     }
 
     public void loadKeys(View view) {
@@ -194,6 +194,18 @@ public class MainActivity extends CommonActivity {
         catch(Exception e) {
             Log.e(TAG, e.toString());
             makeToast("Error al realizar la carga de llaves.");
+        }
+    }
+
+    public void lastSale(View view) {
+        try {
+            Log.i(TAG, "Última venta");
+            String commandLastSale = "0250|";
+            sendToPOS(commandLastSale);
+        }
+        catch(Exception e) {
+            Log.e(TAG, e.toString());
+            makeToast("Error al obtener la última venta.");
         }
     }
 

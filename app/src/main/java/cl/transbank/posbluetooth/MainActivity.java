@@ -18,6 +18,8 @@ import com.ingenico.pclutilities.PclUtilities;
 import java.util.ArrayList;
 import java.util.Set;
 
+import posintegrado.ingenico.com.mposintegrado.mposLib;
+
 public class MainActivity extends CommonActivity {
 
     private static final int connectingColor = Color.rgb(255, 195, 0);
@@ -26,6 +28,7 @@ public class MainActivity extends CommonActivity {
     private EditText editTextAmount, editTextOperationId;
     private TextView textViewStatus;
     private Button btnConnect;
+    mposLib posLib;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,11 @@ public class MainActivity extends CommonActivity {
             textViewStatus.setTextColor(Color.GREEN);
             btnConnect.setText(R.string.btn_disconnect);
             isConnected = true;
+
+            posLib = new mposLib(mPclService);
+            posLib.setOnTransactionFinishedListener(response -> {
+                Log.i(TAG, posLib.convertHexToString(response));
+            });
             return;
         }
 
@@ -94,6 +102,7 @@ public class MainActivity extends CommonActivity {
         textViewStatus.setTextColor(Color.RED);
         btnConnect.setText(R.string.btn_connect);
         isConnected = false;
+        posLib.setOnTransactionFinishedListener(null);
     }
 
     @Override
@@ -152,6 +161,40 @@ public class MainActivity extends CommonActivity {
         }
 
         disconnectDevice();
+    }
+
+    private byte LRC(String command) {
+        byte lrc = 0;
+        byte[] hexCommand = posLib.hexStringToByteArray(command);
+
+        for(int i = 1; i < hexCommand.length; i++) {
+            lrc ^= hexCommand[i];
+        }
+
+        return lrc;
+    }
+
+    private void sendToPOS(String command) {
+        final String STX = "02";
+        final String ETX = "03";
+
+        String hexCommand = STX + posLib.convertStringToHex(command) + ETX;
+        byte lrc = LRC(hexCommand);
+        String fullCommand = hexCommand + String.format("%02X",lrc);
+        Log.i(TAG, posLib.convertHexToString(fullCommand));
+        posLib.startTransaction("fullCommand");
+    }
+
+    public void loadKeys(View view) {
+        try {
+            Log.i(TAG, "Carga de llaves");
+            String commandLoadKey = "0800";
+            sendToPOS(commandLoadKey);
+        }
+        catch(Exception e) {
+            Log.e(TAG, e.toString());
+            makeToast("Error al realizar la carga de llaves.");
+        }
     }
 
     private void makeToast(String text) {

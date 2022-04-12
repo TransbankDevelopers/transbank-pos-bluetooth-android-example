@@ -58,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
+        android:onClick="lastSale"
         android:text="@string/btn_last_sale"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect" />
@@ -68,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
+        android:onClick="totals"
         android:text="@string/btn_totals"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLoadKeys" />
@@ -78,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
+        android:onClick="close"
         android:text="@string/btn_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLastSale" />

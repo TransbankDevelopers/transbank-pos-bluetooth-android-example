@@ -223,6 +223,18 @@ public class MainActivity extends CommonActivity {
         }
     }
 
+    public void close(View view) {
+        try {
+            Log.i(TAG, "Cierre de POS");
+            String command = "0500||";
+            sendToPOS(command);
+        }
+        catch(Exception e) {
+            Log.e(TAG, e.toString());
+            makeToast("Error al realizar el cierre del POS.");
+        }
+    }
+
     private void makeToast(String text) {
         MainActivity activity = this;
         activity.runOnUiThread(() -> Toast.makeText(activity, text, Toast.LENGTH_SHORT).show());

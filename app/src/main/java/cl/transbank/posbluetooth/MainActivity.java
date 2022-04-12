@@ -38,7 +38,7 @@ public class MainActivity extends CommonActivity {
 
         textViewStatus = findViewById(R.id.textViewStatus);
         btnConnect = findViewById(R.id.btnConnect);
-        //editTextAmount = findViewById(R.id.etxt_amount);
+        editTextAmount = findViewById(R.id.editTextAmount);
         //editTextOperationId = findViewById(R.id.etxt_operationID);
     }
 
@@ -109,7 +109,7 @@ public class MainActivity extends CommonActivity {
 
     @Override
     void onPclServiceConnected() {
-
+        // Do something when the event is executed
     }
 
     private void startPclService() {
@@ -244,6 +244,25 @@ public class MainActivity extends CommonActivity {
         catch(Exception e) {
             Log.e(TAG, e.toString());
             makeToast("Error al obtener el detalle de ventas.");
+        }
+    }
+
+    public void sale(View view) {
+        try {
+            Log.i(TAG, "Venta");
+            String textAmount = editTextAmount.getText().toString();
+
+            if(textAmount.trim().equals("")){
+                makeToast("Monto invalido");
+                return;
+            }
+
+            String command = "0200|" + textAmount + "|123456|||0";;
+            sendToPOS(command);
+        }
+        catch (Exception e) {
+            Log.e(TAG, e.toString());
+            makeToast("Error al realizar la venta.");
         }
     }
 

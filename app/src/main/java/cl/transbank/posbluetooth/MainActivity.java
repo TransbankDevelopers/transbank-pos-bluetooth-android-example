@@ -75,12 +75,14 @@ public class MainActivity extends CommonActivity {
     protected void onPause() {
         super.onPause();
         Log.i(TAG, "onPause Main Activity");
+        disconnectDevice();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy Main Activity");
+        disconnectDevice();
     }
 
     @Override
@@ -188,8 +190,8 @@ public class MainActivity extends CommonActivity {
     public void loadKeys(View view) {
         try {
             Log.i(TAG, "Carga de llaves");
-            String commandLoadKey = "0800";
-            sendToPOS(commandLoadKey);
+            String command = "0800";
+            sendToPOS(command);
         }
         catch(Exception e) {
             Log.e(TAG, e.toString());
@@ -200,12 +202,24 @@ public class MainActivity extends CommonActivity {
     public void lastSale(View view) {
         try {
             Log.i(TAG, "Última venta");
-            String commandLastSale = "0250|";
-            sendToPOS(commandLastSale);
+            String command = "0250|";
+            sendToPOS(command);
         }
         catch(Exception e) {
             Log.e(TAG, e.toString());
             makeToast("Error al obtener la última venta.");
+        }
+    }
+
+    public void totals(View view) {
+        try {
+            Log.i(TAG, "Total de ventas");
+            String command = "0700||";
+            sendToPOS(command);
+        }
+        catch(Exception e) {
+            Log.e(TAG, e.toString());
+            makeToast("Error al obtener el total de ventas.");
         }
     }
 

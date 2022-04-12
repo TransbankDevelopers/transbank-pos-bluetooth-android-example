@@ -235,6 +235,18 @@ public class MainActivity extends CommonActivity {
         }
     }
 
+    public void details(View view) {
+        try {
+            Log.i(TAG, "Detalle de ventas");
+            String command = "0260|1|";
+            sendToPOS(command);
+        }
+        catch(Exception e) {
+            Log.e(TAG, e.toString());
+            makeToast("Error al obtener el detalle de ventas.");
+        }
+    }
+
     private void makeToast(String text) {
         MainActivity activity = this;
         activity.runOnUiThread(() -> Toast.makeText(activity, text, Toast.LENGTH_SHORT).show());

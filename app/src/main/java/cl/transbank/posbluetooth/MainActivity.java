@@ -25,7 +25,7 @@ public class MainActivity extends CommonActivity {
     private static final int connectingColor = Color.rgb(255, 195, 0);
     private String selectedDevice;
     private Boolean isConnected = false;
-    private EditText editTextAmount, editTextOperationId;
+    private EditText editTextAmount, editTextOperationId, editTextResponse;
     private TextView textViewStatus;
     private Button btnConnect;
     mposLib posLib;
@@ -40,6 +40,7 @@ public class MainActivity extends CommonActivity {
         btnConnect = findViewById(R.id.btnConnect);
         editTextAmount = findViewById(R.id.editTextAmount);
         editTextOperationId = findViewById(R.id.editTextOperationId);
+        editTextResponse = findViewById(R.id.editTextResponse);
     }
 
     @Override
@@ -95,7 +96,9 @@ public class MainActivity extends CommonActivity {
 
             posLib = new mposLib(mPclService);
             posLib.setOnTransactionFinishedListener(response -> {
-                Log.i(TAG, posLib.convertHexToString(response));
+                String formatedResponse = posLib.convertHexToString(response);
+                Log.i(TAG, formatedResponse);
+                editTextResponse.setText(formatedResponse);
             });
             return;
         }

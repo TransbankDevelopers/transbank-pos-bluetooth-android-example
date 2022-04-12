@@ -24,6 +24,7 @@
     <string name="txt_hint_commerce_code">Código de comercio</string>
     <string name="txt_hint_operation_id">Nº Operación</string>
     <string name="sw_get_voucher">Obtener voucher</string>
+    <string name="txt_response">Respuesta:</string>
     <string-array name="commerce_codes">
         <item>597029414301</item>
         <item>597029414302</item>

@@ -39,7 +39,7 @@ public class MainActivity extends CommonActivity {
         textViewStatus = findViewById(R.id.textViewStatus);
         btnConnect = findViewById(R.id.btnConnect);
         editTextAmount = findViewById(R.id.editTextAmount);
-        //editTextOperationId = findViewById(R.id.etxt_operationID);
+        editTextOperationId = findViewById(R.id.editTextOperationId);
     }
 
     @Override
@@ -263,6 +263,25 @@ public class MainActivity extends CommonActivity {
         catch (Exception e) {
             Log.e(TAG, e.toString());
             makeToast("Error al realizar la venta.");
+        }
+    }
+
+    public void refund(View view) {
+        try {
+            Log.i(TAG, "Devolución de venta");
+            String textOperationId = editTextOperationId.getText().toString();
+
+            if(textOperationId.trim().equals("")){
+                makeToast("Nº de operación invalido");
+                return;
+            }
+
+            String command = "1200|" + textOperationId + "|";;
+            sendToPOS(command);
+        }
+        catch (Exception e) {
+            Log.e(TAG, e.toString());
+            makeToast("Error al realizar la devolución.");
         }
     }
 

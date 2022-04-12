@@ -13,7 +13,7 @@
     <string name="btn_multicode_sale">Venta multicódigo</string>
     <string name="btn_last_sale">Última venta</string>
     <string name="btn_multicode_last_sale">Última venta multicódigo</string>
-    <string name="btn_refund">Anular venta</string>
+    <string name="btn_refund">Anular</string>
     <string name="btn_totals">Total de ventas</string>
     <string name="btn_details">Detalle de ventas</string>
     <string name="btn_multicode_details">Detalle de ventas multicódigo</string>

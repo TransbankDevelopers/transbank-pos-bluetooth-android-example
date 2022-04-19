@@ -22,7 +22,6 @@ import posintegrado.ingenico.com.mposintegrado.mposLib;
 
 public class MainActivity extends CommonActivity {
 
-    private static final int connectingColor = Color.rgb(255, 195, 0);
     private String selectedDevice;
     private Boolean isConnected = false;
     private EditText editTextAmount, editTextOperationId, editTextResponse;
@@ -139,7 +138,7 @@ public class MainActivity extends CommonActivity {
 
     private void connectDevice(String deviceAddress) {
         textViewStatus.setText(R.string.connecting);
-        textViewStatus.setTextColor(connectingColor);
+        textViewStatus.setTextColor(getResources().getColor(R.color.connecting));
         mPclUtil.ActivateCompanion(deviceAddress);
         startPclService();
         initService();

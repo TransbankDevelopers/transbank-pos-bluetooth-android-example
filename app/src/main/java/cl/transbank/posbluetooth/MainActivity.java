@@ -66,6 +66,7 @@ public class MainActivity extends CommonActivity {
             }
 
             selectedDevice = btDevices.get(0).getAddress();
+            return;
         }
 
         this.makeToast(R.string.no_paired_device);

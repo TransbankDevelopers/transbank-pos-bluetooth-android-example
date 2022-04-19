@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 import com.ingenico.pclservice.PclService;
 import com.ingenico.pclutilities.PclUtilities;
 
@@ -23,8 +25,10 @@ import posintegrado.ingenico.com.mposintegrado.mposLib;
 public class MainActivity extends CommonActivity {
 
     private String selectedDevice;
-    private Boolean isConnected = false;
-    private EditText editTextAmount, editTextOperationId, editTextResponse;
+    private boolean isConnected = false;
+    private EditText editTextAmount;
+    private EditText editTextOperationId;
+    private EditText editTextResponse;
     private TextView textViewStatus;
     private Button btnConnect;
     mposLib posLib;
@@ -49,26 +53,22 @@ public class MainActivity extends CommonActivity {
 
         ArrayList<PosBluetooth> btDevices = this.getDevices();
 
-        if (btDevices != null)
-        {
-            if (btDevices.size() > 0) {
-                // Loop through paired devices
-                for (PosBluetooth device : btDevices) {
-                    Log.d(TAG, device.getAddress() + " - " + device.getName());
+        if (!btDevices.isEmpty()) {
+            // Loop through paired devices
+            for (PosBluetooth device : btDevices) {
+                Log.d(TAG, device.getAddress() + " - " + device.getName());
 
-                    if (device.isActivated() && isConnected) {
-                        selectedDevice = device.getAddress();
-                        connectDevice(selectedDevice);
-                        return;
-                    }
+                if (device.isActivated() && isConnected) {
+                    selectedDevice = device.getAddress();
+                    connectDevice(selectedDevice);
+                    return;
                 }
-
-                selectedDevice = btDevices.get(0).getAddress();
             }
+
+            selectedDevice = btDevices.get(0).getAddress();
         }
 
-        if (btDevices.size() == 0)
-            this.makeToast(R.string.no_paired_device);
+        this.makeToast(R.string.no_paired_device);
     }
 
     @Override
@@ -138,7 +138,7 @@ public class MainActivity extends CommonActivity {
 
     private void connectDevice(String deviceAddress) {
         textViewStatus.setText(R.string.connecting);
-        textViewStatus.setTextColor(getResources().getColor(R.color.connecting));
+        textViewStatus.setTextColor(ContextCompat.getColor(this, R.color.connecting));
         mPclUtil.ActivateCompanion(deviceAddress);
         startPclService();
         initService();
@@ -167,9 +167,9 @@ public class MainActivity extends CommonActivity {
         disconnectDevice();
     }
 
-    private byte LRC(String command) {
+    private byte lrc(String command) {
         byte lrc = 0;
-        byte[] hexCommand = posLib.hexStringToByteArray(command);
+        byte[] hexCommand = mposLib.hexStringToByteArray(command);
 
         for(int i = 1; i < hexCommand.length; i++) {
             lrc ^= hexCommand[i];
@@ -183,7 +183,7 @@ public class MainActivity extends CommonActivity {
         final String ETX = "03";
 
         String hexCommand = STX + posLib.convertStringToHex(command) + ETX;
-        byte lrc = LRC(hexCommand);
+        byte lrc = lrc(hexCommand);
         String fullCommand = hexCommand + String.format("%02X",lrc);
         Log.i(TAG, posLib.convertHexToString(fullCommand));
         posLib.startTransaction(fullCommand);
@@ -259,7 +259,7 @@ public class MainActivity extends CommonActivity {
                 return;
             }
 
-            String command = "0200|" + textAmount + "|123456|||0";;
+            String command = "0200|" + textAmount + "|123456|||0";
             sendToPOS(command);
         }
         catch (Exception e) {
@@ -278,7 +278,7 @@ public class MainActivity extends CommonActivity {
                 return;
             }
 
-            String command = "1200|" + textOperationId + "|";;
+            String command = "1200|" + textOperationId + "|";
             sendToPOS(command);
         }
         catch (Exception e) {

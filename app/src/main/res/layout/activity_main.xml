@@ -113,17 +113,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/txt_hint_sale"
-        android:textColor="@color/tbk_dev_text"
         android:drawableStart="@drawable/ic_baseline_attach_money_24"
         android:drawablePadding="4dp"
+        android:ems="10"
+        android:hint="@string/txt_hint_sale"
+        android:hintTextColor="#757575"
         android:imeOptions="actionDone"
         android:inputType="number"
         android:minHeight="48dp"
         android:nextFocusRight="@id/btnSale"
+        android:textColor="@color/tbk_dev_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDetails" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDetails"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btnSale"
@@ -143,17 +145,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/txt_hint_operation_id"
-        android:textColor="@color/tbk_dev_text"
         android:drawableStart="@drawable/ic_baseline_receipt_24"
         android:drawablePadding="4dp"
+        android:ems="10"
+        android:hint="@string/txt_hint_operation_id"
+        android:hintTextColor="#757575"
         android:imeOptions="actionDone"
         android:inputType="number"
         android:minHeight="48dp"
         android:nextFocusRight="@id/btnRefund"
+        android:textColor="@color/tbk_dev_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAmount"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btnRefund"
@@ -191,18 +195,18 @@
         android:layout_marginBottom="16dp"
         android:layout_weight="1"
         android:background="@color/tbk_dev_text_background"
-        android:editable="false"
         android:ems="10"
         android:focusable="false"
         android:gravity="start|top"
         android:importantForAccessibility="no"
-        android:inputType="textMultiLine"
+        android:inputType="none|textMultiLine"
         android:padding="5dp"
         android:textColor="@color/tbk_dev_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewResponse" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewResponse"
+        android:importantForAutofill="no" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

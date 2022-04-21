@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="connecting">#FFC300</color>
+    <color name="tbk_dev_color">#BF0860</color>
+    <color name="tbk_dev_text">#333333</color>
+    <color name="tbk_dev_text_background">#f1f3f6</color>
 </resources>

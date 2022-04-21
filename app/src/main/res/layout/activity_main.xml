@@ -117,15 +117,15 @@
         android:drawablePadding="4dp"
         android:ems="10"
         android:hint="@string/txt_hint_sale"
-        android:hintTextColor="#757575"
         android:imeOptions="actionDone"
+        android:importantForAutofill="no"
         android:inputType="number"
         android:minHeight="48dp"
         android:nextFocusRight="@id/btnSale"
         android:textColor="@color/tbk_dev_text"
+        android:textColorHint="@color/hint_text_color"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDetails"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDetails" />
 
     <Button
         android:id="@+id/btnSale"
@@ -149,12 +149,12 @@
         android:drawablePadding="4dp"
         android:ems="10"
         android:hint="@string/txt_hint_operation_id"
-        android:hintTextColor="#757575"
         android:imeOptions="actionDone"
         android:inputType="number"
         android:minHeight="48dp"
         android:nextFocusRight="@id/btnRefund"
         android:textColor="@color/tbk_dev_text"
+        android:textColorHint="@color/hint_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextAmount"
         android:importantForAutofill="no" />

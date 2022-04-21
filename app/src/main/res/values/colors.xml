@@ -11,4 +11,5 @@
     <color name="tbk_dev_color">#BF0860</color>
     <color name="tbk_dev_text">#333333</color>
     <color name="tbk_dev_text_background">#f1f3f6</color>
+    <color name="hint_text_color">#757575</color>
 </resources>

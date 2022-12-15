@@ -5,7 +5,7 @@ Este proyecto de ejemplo permite la comunicación con el POS Bluetooth. El ejemp
 ## Requisitos
 
 - El proyecto fue creado utilizando Android Studio Artic Fox 2020.3.1 Patch 4
-- Android 4.x (API 14)
+- Este proyecto se ha probado en dispositivos con Android 10 y 11.
 
 ## Dependencias
 
